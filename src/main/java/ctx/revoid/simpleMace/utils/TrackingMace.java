@@ -98,7 +98,6 @@ public class TrackingMace {
     public Map<String, Integer> getMaces() {
         Map<String, Integer> uuid = new HashMap<>();
 
-        // Ждём завершения каждой задачи
         Map<String, Integer> online = countMaceForOnline().join();
         uuid.putAll(online);
 
