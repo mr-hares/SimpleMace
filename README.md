@@ -5,6 +5,7 @@
 **Features**
 - Flexible customization of receiving and interacting with the mace.
 - Support for HEX colors.
+- Dynamic tracking of the REAL number of mace on the server
 
 ---
 
