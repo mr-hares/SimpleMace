@@ -26,7 +26,9 @@ restrictions:
 list:
   is-empty: "{prefix}Список булав &#ffff99пуст"
   header: "  {prefix}&fСписок булав"
-  item: "&#ffff99- &f{player} ({status}&f) &7| &f{date}"
+  item: "&#ffff99- &f{player} ({status}&f) &7| &fКоличество: &#ffff99{count}"
   status:
     online: "&aОнлайн"
     offline: "&cОффлайн"
+
+  not-player: "&#ffff99- &fНет владельца &7| &fКоличество: &#ffff99{count}"

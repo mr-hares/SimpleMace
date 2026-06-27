@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import ctx.revoid.simpleMace.command.simplemace;
 import ctx.revoid.simpleMace.listener.*;
-import ctx.revoid.simpleMace.utils.DataBase;
+import ctx.revoid.simpleMace.utils.TrackingMace;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 public final class SimpleMace extends JavaPlugin {
     private static SimpleMace instance;
-    private static DataBase DataBase;
+    private static TrackingMace trackingMace;
     private static YamlConfiguration messages;
 
     @Override
@@ -31,7 +31,7 @@ public final class SimpleMace extends JavaPlugin {
         sendConsole("&f&r\n  &#ffff99SimpleMace &8- &7v" + getDescription().getVersion() + "\n  &7Enable plugin&r\n&f&r");
         load();
 
-        DataBase = new DataBase(this);
+        trackingMace = new TrackingMace();
         registerAllEvents();
 
         new simplemace();
@@ -59,12 +59,12 @@ public final class SimpleMace extends JavaPlugin {
         if (!ru_ru.exists()) saveResource("messages/ru_ru.yml", false);
         if (!en_us.exists()) saveResource("messages/en_us.yml", false);
 
-        messages = YamlConfiguration.loadConfiguration(Objects.equals(getConfig().getString("lang", "en_us"),
-                "ru_ru") ? ru_ru : en_us);
+        messages = YamlConfiguration.loadConfiguration(Objects.equals(getConfig().getString("lang", "en"),
+                "ru") ? ru_ru : en_us);
     }
 
-    public static void reload() {
-        getInstance().reloadConfig();
+    public void reload() {
+        reloadConfig();
 
         File ru_ru = new File(getInstance().getDataFolder(), "messages/ru_ru.yml");
         File en_us = new File(getInstance().getDataFolder(), "messages/en_us.yml");
@@ -72,8 +72,9 @@ public final class SimpleMace extends JavaPlugin {
         if (!ru_ru.exists()) getInstance().saveResource("messages/ru_ru.yml", false);
         if (!en_us.exists()) getInstance().saveResource("messages/en_us.yml", false);
 
-        messages = YamlConfiguration.loadConfiguration(Objects.equals(getInstance().getConfig().getString("lang", "en_us"),
-                "ru_ru") ? ru_ru : en_us);
+        messages = YamlConfiguration.loadConfiguration(Objects.equals(getInstance().getConfig().getString("lang",
+                        "en"),
+                "ru") ? ru_ru : en_us);
     }
 
     @Override
@@ -83,7 +84,7 @@ public final class SimpleMace extends JavaPlugin {
     }
 
     public static SimpleMace getInstance() { return instance; }
-    public static DataBase getDataBase() { return DataBase; }
+    public static TrackingMace getTrackingMace() { return trackingMace; }
     public static YamlConfiguration getMessages() { return messages; }
 
     public static String color(String message) {

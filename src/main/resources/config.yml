@@ -1,5 +1,5 @@
 # Plugin language
-lang: en_en
+lang: en
 
 # Maximum number of maces on the entire server (default: 5)
 max-mace-count: 5

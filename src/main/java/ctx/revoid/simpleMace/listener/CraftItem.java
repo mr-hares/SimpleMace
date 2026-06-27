@@ -14,25 +14,25 @@ public class CraftItem implements Listener {
     public void onCraftItem(CraftItemEvent event) {
         if (event.getRecipe().getResult().getType().equals(Material.MACE)) {
             Player player = (Player) event.getView().getPlayer();
-            if (getDataBase().getMaces().size() >= getInstance().getConfig().getInt("max-mace-count", 5)) {
+            if (getTrackingMace().getMaces().values().stream().mapToInt(Integer::intValue).sum() >= getInstance().getConfig().getInt("max-mace-count", 5)) {
                 player.sendMessage(color(getMessages().getString("craft-message.decline")
-                        .replace("{current_mace}", String.valueOf(getDataBase().getMaces().size()))
+                        .replace("{current_mace}",
+                                String.valueOf(getTrackingMace().getMaces().values().stream().mapToInt(Integer::intValue).sum()))
                         .replace("{max_maces}", String.valueOf(getInstance().getConfig().getInt("max-mace-count", 5)))
                 ));
                 event.setCancelled(true);
                 return;
             }
 
-            getDataBase().addMace(player);
             player.sendMessage(color(getMessages().getString("craft-message.success")
-                    .replace("{current_mace}", String.valueOf(getDataBase().getMaces().size()))
+                    .replace("{current_mace}", String.valueOf(getTrackingMace().getMaces().values().stream().mapToInt(Integer::intValue).sum()))
             ));
 
             if (getInstance().getConfig().getBoolean("broadcasts.craft", false)) {
                 for (Player online: Bukkit.getOnlinePlayers()) {
                     if (online != player) {
                         online.sendMessage(color(getMessages().getString("craft-message.success")
-                                .replace("{current_mace}", String.valueOf(getDataBase().getMaces().size())
+                                .replace("{current_mace}", String.valueOf(getTrackingMace().getMaces().values().stream().mapToInt(Integer::intValue).sum())
                                         .replace("{player}", player.getName())
                                 )));
                     }

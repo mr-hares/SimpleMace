@@ -1,13 +1,16 @@
 package ctx.revoid.simpleMace.command;
 
 import ctx.revoid.simpleMace.utils.CommandTemplate;
-import ctx.revoid.simpleMace.utils.MaceDate;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 
 import static ctx.revoid.simpleMace.SimpleMace.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
 
 public class simplemace extends CommandTemplate {
     public simplemace() {
@@ -31,10 +34,11 @@ public class simplemace extends CommandTemplate {
                 sender.sendMessage(color(getMessages().getString("not-permissions")));
                 return;
             }
-            reload();
+            getInstance().reload();
             sender.sendMessage(color(getMessages().getString("reload")));
         } else if (args[0].equalsIgnoreCase("list")) {
-            List<MaceDate> maces = getDataBase().getMaces();
+            Map<String, Integer> maces = getTrackingMace().getMaces();
+
             if (maces.isEmpty()) {
                 sender.sendMessage(color(getMessages().getString("list.is-empty")));
                 return;
@@ -44,11 +48,19 @@ public class simplemace extends CommandTemplate {
             String offline = getMessages().getString("list.status.offline");
 
             sender.sendMessage(color(getMessages().getString("list.header")));
-            for (MaceDate mace: maces) {
+            for (String uuid: maces.keySet()) {
+                if (Objects.equals(uuid, "world")) {
+                    sender.sendMessage(color(getMessages().getString("list.not-player")
+                            .replace("{count}", String.valueOf(maces.get(uuid)))
+                    ));
+                    continue;
+                }
+                OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(uuid));
+
                 sender.sendMessage(color(getMessages().getString("list.item")
-                        .replace("{player}", mace.getName())
-                        .replace("{date}", mace.getDate())
-                        .replace("{status}", Bukkit.getPlayer(mace.getUUID()) == null ? offline : online)
+                        .replace("{player}", player.getName())
+                        .replace("{count}", String.valueOf(maces.get(uuid)))
+                        .replace("{status}", player.isOnline() ? online : offline)
                 ));
             }
         }

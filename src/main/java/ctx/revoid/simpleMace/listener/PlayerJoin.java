@@ -27,7 +27,7 @@ public class PlayerJoin implements Listener {
                     message.addExtra(" &r&f, дабы разблокировать новые возможности");
                     event.getPlayer().spigot().sendMessage(button);
                 } else {
-                    TextComponent button = new TextComponent(color("&#ffff99&nLink"));  // "Link" instead of "Ссылке"
+                    TextComponent button = new TextComponent(color("&#ffff99&nLink"));
                     button.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText("https://modrinth.com/plugin/simlemace/versions")));
                     button.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://modrinth" +
                             ".com/plugin/simlemace/versions"));
