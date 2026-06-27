@@ -1,0 +1,32 @@
+prefix: "&#ffff99(SimpleMace) &r"
+
+reload: "{prefix}Plugin configuration successfully &#ffff99reloaded"
+not-permissions: "{prefix}You have &#ffff99insufficient permissions &fto use this command"
+
+help:
+  command-list:
+    - ""
+    - "  {prefix}&fList of available commands:"
+    - "&f/simplemace (/mc) reload &7- &fReload plugin configuration"
+    - "&f/simplemace (/mc) list &7- &fList of players with maces"
+    - ""
+
+craft-message:
+  success: "{prefix}You have successfully created &#ffff99{current_mace} &fmace on the server"
+  decline: "{prefix}The server has &#ffff99reached the mace limit &7(&#ffff99{current_mace}/{max_maces}&7)"
+  broadcast: "{prefix}Player &#ffff99{player} successfully created &#ffff99{current_mace} &fmace on the server"
+
+restrictions:
+  disable-chest: "{prefix}Mace &#ffff99cannot &fbe placed in a chest"
+  disable-ender-chest: "{prefix}Mace &#ffff99cannot &fbe placed in an ender chest"
+  disable-shulker-boxes: "{prefix}Mace &#ffff99cannot &fbe placed in a shulker box"
+  block-armor-stands: "{prefix}Mace &#ffff99cannot &fbe placed on an armor stand"
+  block-item-frames: "{prefix}Mace &#ffff99cannot &fbe placed in item frames"
+
+list:
+  is-empty: "{prefix}The list maces is &#ffff99empty"
+  header: "  {prefix}&fList maces"
+  item: "&#ffff99- &f{player} ({status}&f) &7| &f{date}"
+  status:
+    online: "&aOnline"
+    offline: "&cOffline"

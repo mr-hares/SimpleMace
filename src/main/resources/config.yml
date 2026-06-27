@@ -1,0 +1,21 @@
+# Plugin language
+lang: en_en
+
+# Maximum number of maces on the entire server (default: 5)
+max-mace-count: 5
+
+restrictions:
+  # Disable storing the mace in a chest.
+  disable-chest: true
+  # Disable storing the mace in an ender chest.
+  disable-ender-chest: true
+  # Disable storing the mace in a shulker box.
+  disable-shulker-boxe: true
+  # Prevent placing maces on armor stands
+  block-armor-stands: true
+  # Prevent placing maces in item frames
+  block-item-frames: true
+
+broadcasts:
+  # Notify all players when someone creates a mace
+  craft: true

@@ -1,0 +1,32 @@
+prefix: "&#ffff99(SimpleMace) &r"
+
+reload: "{prefix}Конфигурация плагина успешно &#ffff99перезагружена"
+not-permissions: "{prefix}У вас &#ffff99недостаточно прав &fна использование данной команды"
+
+help:
+  command-list:
+    - ""
+    - "  {prefix}&fСписок доступных команд:"
+    - "&f/simplemace (/mc) reload &7- &fПерезагрузка конфигруации плагина"
+    - "&f/simplemace (/mc) list &7- &fСписок игроков с булавами"
+    - ""
+
+craft-message:
+  success: "{prefix}Вы успешно создали &#ffff99{current_mace} &fбулаву на сервере"
+  decline: "{prefix}На сервере &#ffff99достигнул лимит &fбулав &7(&#ffff99{current_mace}/{max_maces}&7)"
+  broadcast: "{prefix}Игрок &#ffff99{player} успешно создал &#ffff99{current_mace} &fбулаву на сервере"
+
+restrictions:
+  disable-chest: "{prefix}Булаву &#ffff99нельзя &fположить в сундук"
+  disable-ender-chest: "{prefix}Булаву &#ffff99нельзя &fположить в сундук края"
+  disable-shulker-boxes: "{prefix}Булаву &#ffff99нельзя &fположить в шалкер-ящик"
+  block-armor-stands: "{prefix}Булаву &#ffff99нельзя &fразместить на стойке для брони"
+  block-item-frames: "{prefix}Булаву &#ffff99нельзя &fразместить в рамках для предметов"
+
+list:
+  is-empty: "{prefix}Список булав &#ffff99пуст"
+  header: "  {prefix}&fСписок булав"
+  item: "&#ffff99- &f{player} ({status}&f) &7| &f{date}"
+  status:
+    online: "&aОнлайн"
+    offline: "&cОффлайн"

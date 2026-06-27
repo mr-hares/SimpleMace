@@ -1,0 +1,16 @@
+name: SimpleMace
+version: '1.1.0'
+main: ctx.revoid.simpleMace.SimpleMace
+api-version: '1.21'
+authors: [ mr_hares ]
+
+commands:
+  simplemace:
+    aliases: [sm]
+    permissions: simplemace.use
+
+permissions:
+  simplemace.use:
+    description: Права на использование команды /simplemace
+  simplemace.reload:
+    description: Права на перезагрузку конфигурации
